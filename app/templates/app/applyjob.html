@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static '/css/signup.css'%}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Apply Job</div>
+    <div class="content">
+        <center>
+            <h3 style="color:red;">{{msg}}</h3>
+        </center>
+      <form action="{% url 'canJobApply' %}" method="POST">
+        {% csrf_token %}
+        <input name="pk" value="{{job}}" hidden>
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" name='fname' placeholder="Enter your FirstName" value="{{can.firstname}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input type="text" name='lname' placeholder="Enter your LastName" value="{{can.lastname}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Contact</span>
+            <input type="text" name='phone' placeholder="Enter your Phone Number" value="{{can.contact}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="emai;" name='email'  placeholder="Enter your Email"  value="{{can.user_id.email}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Portfolio website</span>
+            <input type="text" name='website'  placeholder="Enter your Website">
+          </div>
+          <div class="input-box">
+            <span class="details">State</span>
+            <input type="text" name='state' placeholder="Enter your State" value="{{can.state}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" name='city' placeholder="Enter your City" value="{{can.city}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Gender</span>
+            {% if can.gender == 'Male' %}
+            <select name="gender">
+                <option seleted >Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            {% elif can.gender == 'Female' %}
+            <select name="gender">
+                <option>Male</option>
+                <option selected>Female</option>
+                <option>Other</option>
+            </select>
+            {% else %}
+            <select name="gender">
+                <option>Male</option>
+                <option >Female</option>
+                <option selected>Other</option>
+            </select>
+            {% endif %}
+          </div>
+          <div class="input-box">
+            <span class="details">Min salary</span>
+            <input type="text" name='minsalary' placeholder="Enter your minimum salary" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Max salary</span>
+            <input type="text" name='maxsalary' placeholder="Enter your minimum salary" required>
+          </div>
+          <div class="input-box">
+            <span class="details">experience</span>
+            <input type="text" name='experience' placeholder="Enter your experience" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Education</span>
+            <input type="text" name='education' placeholder="Enter your education" required>
+          </div>
+        </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit" >
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

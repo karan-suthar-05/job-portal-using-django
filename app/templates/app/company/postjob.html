@@ -1,0 +1,78 @@
+{% extends "app/company/base1.html" %}
+{% load static %}
+{% block  content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Post your job</h1>
+                <div class="card-body">
+                    <div>
+                        <center>
+                            <h3 style="color:green;">{{msg}}</h3>
+                        </center>
+                    </div>
+                    <form action=" {% url 'postJob' pk=request.session.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="jobname" type="text" placeholder="Web Develpoment" name="jobname" />
+                            <label for="jobname">Enter job name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="company name" name="compname" />
+                            <label for="compname">Enter company name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compadd" type="text" name="compadd"  placeholder="company address">
+                            <label for="compadd">Enter company address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="jobdesc" />
+                            <label for="compname">Enter job description</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="qualification" />
+                            <label for="compname">Enter qualification</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="responsibility" />
+                            <label for="compname">Enter job responsibility</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="location" />
+                            <label for="compname">Enter job location</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="website" />
+                            <label for="compname">Enter company website</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="email" placeholder="job desc" name="email" />
+                            <label for="compname">Enter company email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="contact" />
+                            <label for="compname">Enter company contact</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="salary" />
+                            <label for="compname">Enter salary</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="compname" type="text" placeholder="job desc" name="experiance" />
+                            <label for="compname">Enter experiance</label>
+                        </div>
+                        
+                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                            
+                            <input class="btn btn-primary" type="submit" value="submit">
+                        </div>
+                    </form>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+{% endblock %}

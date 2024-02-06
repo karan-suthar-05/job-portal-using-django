@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static '/css/signup.css'%}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">OTP Verification</div>
+    <div class="content">
+        <center>
+            <h3 style="color:red;">{{msg}}</h3>
+        </center>
+      <form action="{% url 'otpverify' %}" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" value="{{request.session.otpemail}}" readonly>
+          </div>
+          <div class="input-box">
+            <span class="details">OTP</span>
+            <input type="text" name="otp" placeholder="Enter your otp" required>
+          </div>
+          
+       
+        <div class="button">
+          <input type="submit" value="Verify">
+        </div>
+        {% if 'otpemail' in request.session %}
+        
+        <a href="{% url 'resendOtp'  email=request.session.otpemail %}" class="button">Resend otp</a>
+        
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

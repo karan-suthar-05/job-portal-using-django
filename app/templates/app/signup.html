@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static '/css/signup.css'%}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <center>
+            <h3 style="color:red;">{{msg}}</h3>
+        </center>
+      <form action="{% url 'registeruser' %}" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" name="fname" placeholder="Enter your first name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input type="text" name="lname" placeholder="Enter your last name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name='email' placeholder="Enter your email" required>
+          </div>
+          {% comment %} <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" required>
+          </div> {% endcomment %}
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" name="cpassword" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        <div class="gender-details">
+            Choose Role : 
+          <select name="role" id="">
+            <option>===select role===</option>
+            <option>Company</option>
+            <option>Candidate</option>
+          </select>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
